@@ -14,10 +14,10 @@ class ChatStream(object):
         self.csvname = dirid + docid + "_initialparsed.csv"
         self.df = pd.read_csv(self.csvname)
         self.df.index.names=['msg_num']
-        #organize by time
+        # organize by time
         self.df=self.df.set_index('timecode')
         self.df = self.df[self.df.username != 'Fossabot']
-        # 
+        
 
     def parse_the_log(self):
         raw_log = pd.read_csv(self.logname,header=None,delimiter='\n',error_bad_lines=False,encoding='utf-8')
